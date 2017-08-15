@@ -1,0 +1,6 @@
+#!/bin/bash
+set -e -o pipefail
+
+die() { echo "$(basename "$0"):" "$@"; exit 1; }
+
+rpmbuild --version >/dev/null || die "Please 'sudo yum install rpm-build'"
