@@ -12,3 +12,6 @@ grep -s -q "^$topdir_macro\$" ~/.rpmmacros || {
     [[ -e ~/.rpmmacros ]] && die "%_topdir in ~/.rpmmacros is wrong; aborting."
     echo "$topdir_macro" > ~/.rpmmacros
 }
+
+# Steps below are in (non-strict) order of execution for -ba (build all)
+rpmbuild -bs SPECS/ct1.spec     # Build SRPM only
