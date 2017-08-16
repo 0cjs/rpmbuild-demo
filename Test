@@ -28,3 +28,5 @@ build() {
 # Steps below are in (non-strict) order of execution for -ba (build all)
 build -bs ct1           # Build SRPM only
 build -bp ct1           # %prep: unpack sources and apply patches
+build -bc ct1           # %build
+build -bi ct1           # %install (also does -bi %files list check)

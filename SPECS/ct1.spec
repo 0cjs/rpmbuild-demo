@@ -27,12 +27,20 @@ mkdir -p ct1
 cp ../SOURCES/ct1 ./ct1/
 
 %build
-false
+cd ct1
+true            # Nothing to build
 
 %install
-false
+# rpmbuild has created $RPM_BUILD_ROOT (`BUILDROOT/ct1-0.0-1.x86_64/`) for us.
+# Our cwd is BUILD as usual
+mkdir -p $RPM_BUILD_ROOT/tmp/ct
+cp ct1/ct1 $RPM_BUILD_ROOT/tmp/ct/
+# Uncomment the following to trigger detection of an unpackaged file.
+#touch $RPM_BUILD_ROOT/tmp/ct/z
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
+%defattr(-,root,root)
+/tmp/ct/ct1
