@@ -20,3 +20,4 @@ $clean && rm -rf \
 
 # Steps below are in (non-strict) order of execution for -ba (build all)
 rpmbuild -bs SPECS/ct1.spec     # Build SRPM only
+rpmbuild -bp SPECS/ct1.spec     # %prep: unpack sources and apply patches

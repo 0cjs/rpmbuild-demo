@@ -18,7 +18,13 @@ License: hahaha
 This is a test. This is only a test. Had this been a real package, uh....
 
 %prep
-false
+# %setup -q wants to unpack a tar file, which is not what we want;
+# let's just emulate what it does.
+#
+# rpmbuild will make BUILD our CWD at the start
+rm -rf ct1
+mkdir -p ct1
+cp ../SOURCES/ct1 ./ct1/
 
 %build
 false
