@@ -18,6 +18,13 @@ grep -s -q "^$topdir_macro\$" ~/.rpmmacros || {
 $clean && rm -rf \
     "$basedir/BUILD" "$basedir/BUILDROOT" "$basedir/RPMS" "$basedir/SRPMS"
 
+build() {
+    local buildarg=
+    buildcmd="rpmbuild $1 SPECS/$2.spec"
+    echo; echo "===== $buildcmd"
+    $buildcmd
+}
+
 # Steps below are in (non-strict) order of execution for -ba (build all)
-rpmbuild -bs SPECS/ct1.spec     # Build SRPM only
-rpmbuild -bp SPECS/ct1.spec     # %prep: unpack sources and apply patches
+build -bs ct1           # Build SRPM only
+build -bp ct1           # %prep: unpack sources and apply patches
