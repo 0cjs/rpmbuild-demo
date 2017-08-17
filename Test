@@ -30,3 +30,7 @@ build -bs ct1           # Build SRPM only
 build -bp ct1           # %prep: unpack sources and apply patches
 build -bc ct1           # %build
 build -bi ct1           # %install (also does -bi %files list check)
+build -bb ct1           # Build binary package and remove work dir in BUILDROOT
+
+echo; echo "===== Package contents:"
+rpm2cpio RPMS/x86_64/ct1-0.0-1.x86_64.rpm | cpio -tv
